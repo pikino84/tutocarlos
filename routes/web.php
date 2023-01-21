@@ -34,3 +34,4 @@ Route::get('/usuario1/{$nombre}', function($nombre){
 Route::get('/usuario2/{$nombre?}', function($nombre){
     return "Hola usuario " . $nombre;
 });
+//cambi
