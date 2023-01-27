@@ -11,6 +11,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        $this->truncateTables([
+            "users",
+            "entradas",
+            "comentarios"
+        ]);
+        $this->call(UsersTableSeeder::class);
+        $this->call(EntradasTableSeeder::class);
     }
+
+    public function truncateTables(array $tables){
+        foreach($tables as $table){
+            DB::statement('SET FOREIGN_KEY_CHECKS=0');
+            DB::table($table)->truncate();
+            DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        }
+    }
+
 }
